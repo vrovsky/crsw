@@ -1,0 +1,17 @@
+[package]
+name = "crsw"
+version = "0.1.0"
+edition = "2021"
+authors = ["ReB <vrovsky@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+near-sdk = "4.0.0"
+near-contract-standards = "*"
+
+[build-dependencies]
+near-sandbox-utils = "0.6.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
