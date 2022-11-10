@@ -1,14 +1,13 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::{near_bindgen, env};
+use near_sdk::{env, near_bindgen};
 
 const PUZZLE_NUMBER: u8 = 1;
 
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct Contract {
-    crossword_solution: String
+    crossword_solution: String,
 }
-
 
 #[near_bindgen]
 impl Contract {
@@ -29,17 +28,19 @@ impl Contract {
     }
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
     use near_sdk::test_utils::{get_logs, VMContextBuilder};
     use near_sdk::{testing_env, AccountId};
 
-    fn get_context(predecessor: AccountId) -> VMContextBuilder {
-        let mut builder = VMContextBuilder::new();
-        builder.predecessor_account_id(predecessor);
-        builder
+    #[test]
+    fn debug_get_hash() {
+        testing_env!(VMContextBuilder::new().build());
+
+        let debug_solution = "near nomicon ref finance";
+        let debug_hash_bytes = env::sha256(debug_solution.as_bytes());
+        let debug_hash_string = hex::encode(debug_hash_bytes);
+        println!("Let's debug: {:?}", debug_hash_string);
     }
 }

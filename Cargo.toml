@@ -9,6 +9,7 @@ authors = ["ReB <vrovsky@gmail.com>"]
 [dependencies]
 near-sdk = "4.0.0"
 near-contract-standards = "*"
+hex = "*"
 
 [build-dependencies]
 near-sandbox-utils = "0.6.0"
